@@ -91,4 +91,94 @@ class Test extends PHPUnit_Framework_TestCase
 		
 		$this->assertEquals('sebar',$hasil);
 	}
+
+	public function test_worker_single()
+	{
+		$kata = 'berlari';
+		$worker = new \Algenza\Fztstemming\Worker;
+		$hasil = $worker->singleWord($kata);
+
+		$this->assertEquals('lari',$hasil);
+
+		$kata = 'memukul';
+		$hasil = $worker->singleWord($kata);
+
+		$this->assertEquals('pukul',$hasil);
+
+		$kata = 'melakukan';
+		$hasil = $worker->singleWord($kata);
+		
+		$this->assertEquals(false,$hasil);
+
+		$kata = 'melindungi';
+		$hasil = $worker->singleWord($kata);
+		
+		$this->assertEquals('lindung',$hasil);
+
+		$kata = 'pengalaman';
+		$hasil = $worker->singleWord($kata);
+		
+		$this->assertEquals('alam',$hasil);
+
+		$kata = 'penyerangan';
+		$hasil = $worker->singleWord($kata);
+		
+		$this->assertEquals('serang',$hasil);
+
+		$kata = 'pemutihan';
+		$hasil = $worker->singleWord($kata);
+		
+		$this->assertEquals('putih',$hasil);
+
+		$kata = 'tersebar';
+		$hasil = $worker->singleWord($kata);
+		
+		$this->assertEquals('sebar',$hasil);
+	}
+
+	public function test_worker_multi()
+	{
+		$words = [
+			'berlari',
+			'memukul',
+			'penyerangan',
+			'pengalaman',
+			'melakukan',
+			'melindungi',
+			'pengalaman',
+			'penyerangan',
+			'pemutihan',
+			'tersebar',
+			'memukul',
+			'pengalaman',
+			'tersebar',
+		];
+		$worker = new \Algenza\Fztstemming\Worker;
+		$hasil = $worker->multiWords($words);
+
+		var_dump($hasil);
+	}
+
+	public function test_worker_multi_freq()
+	{
+		$words = [
+			'berlari',
+			'memukul',
+			'penyerangan',
+			'pengalaman',
+			'melakukan',
+			'melindungi',
+			'pengalaman',
+			'penyerangan',
+			'pemutihan',
+			'tersebar',
+			'memukul',
+			'pengalaman',
+			'tersebar',
+		];
+		$worker = new \Algenza\Fztstemming\Worker;
+		$hasil = $worker->multiWordsFrequency($words);
+
+		var_dump($hasil);
+	}
 }
