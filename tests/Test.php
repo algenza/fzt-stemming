@@ -47,4 +47,48 @@ class Test extends PHPUnit_Framework_TestCase
 		
 		$this->assertEquals('sebar',$hasil);
 	}
+
+	public function test_checker()
+	{
+		$kata = 'berlari';
+		$checker = new \Algenza\Fztstemming\Checker;
+		$hasil = $checker->checkWord($kata);
+
+		$this->assertEquals('lari',$hasil);
+
+		$kata = 'memukul';
+		$hasil = $checker->checkWord($kata);
+
+		$this->assertEquals('pukul',$hasil);
+
+		$kata = 'melakukan';
+		$hasil = $checker->checkWord($kata);
+		
+		$this->assertEquals(false,$hasil);
+
+		$kata = 'melindungi';
+		$hasil = $checker->checkWord($kata);
+		
+		$this->assertEquals('lindung',$hasil);
+
+		$kata = 'pengalaman';
+		$hasil = $checker->checkWord($kata);
+		
+		$this->assertEquals('alam',$hasil);
+
+		$kata = 'penyerangan';
+		$hasil = $checker->checkWord($kata);
+		
+		$this->assertEquals('serang',$hasil);
+
+		$kata = 'pemutihan';
+		$hasil = $checker->checkWord($kata);
+		
+		$this->assertEquals('putih',$hasil);
+
+		$kata = 'tersebar';
+		$hasil = $checker->checkWord($kata);
+		
+		$this->assertEquals('sebar',$hasil);
+	}
 }
