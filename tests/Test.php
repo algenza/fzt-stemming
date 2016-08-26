@@ -4,7 +4,7 @@ use PHPUnit\Framework\TestCase;
 
 class Test extends PHPUnit_Framework_TestCase
 {
-	public function test_check()
+	public function test_stemmer()
 	{
 		$kata = 'berlari';
 		$stemmer = new \Algenza\Fztstemming\Stemmer;
